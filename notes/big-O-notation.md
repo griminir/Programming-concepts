@@ -6,7 +6,7 @@
 
 - Certain algorithms are more efficient than others, and Big O notation is a way to compare them.
 
-O(1) - Constant time complexity
+### O(1) - Constant time complexity
 
 ```javascript
 function printStuff {console.log(array[0])}
@@ -23,14 +23,9 @@ function printStuff {
 }
 ```
 
-}
+### O(n) - Linear time complexity
 
-```
+### O(n^2) - Quadratic time complexity
 
-O(n) - Linear time complexity
+### O(log n) - Logarithmic time complexity
 
-O(n^2) - Quadratic time complexity
-
-O(log n) - Logarithmic time complexity
-
-```
