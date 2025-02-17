@@ -6,7 +6,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc",
     "start-bubble": "node src/algorithms/bubbleSort.js",
-    "start-array": "node src/data-structure/arrays.js"
+    "start-array": "node src/data-structure/arrays.js",
+    "start-linked": "node src/data-structure/linked-list.js"
   },
   "keywords": [],
   "author": "",

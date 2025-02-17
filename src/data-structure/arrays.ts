@@ -1,6 +1,6 @@
 let intArrray: number[] = [1, 2, 3, 4, 5];
 
-// lookup O(1)
+// lookup by index O(1)
 // push O(1) inserting at the end of the array
 // pop O(1) removing the last element of the array
 // splice O(n) for insering or removing elements from the middle of the array or the beginning
