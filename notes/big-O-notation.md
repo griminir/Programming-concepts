@@ -81,3 +81,15 @@ function printStuff { // O(n^2)
 
 
 ### O(log n) - Logarithmic time complexity
+- is more scalable than O(n) and O(n^2)
+
+
+### O(2^n) - Exponential time complexity
+- is the slowest of all the time complexities
+- it's not scalable at all
+
+### space complexity
+- how much memory is used by the algorithm
+- sometimes we have to make a trade-off between time and space complexity
+- sometimes we can optimize the space complexity by using a different data structure
+- sometimes we can optimize the time complexity by using a different data structure
