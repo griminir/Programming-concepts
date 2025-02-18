@@ -32,6 +32,7 @@ class LinkedNode {
 class HomemadeLinkedList {
   private first: LinkedNode | null = null;
   private last: LinkedNode | null = null;
+  private size: number = 0;
 
   private isEmpty(): boolean {
     return this.first === null;
@@ -45,6 +46,7 @@ class HomemadeLinkedList {
       this.last?.setNext(node);
       this.last = node;
     }
+    this.size++;
   }
 
   public addFirst(item: number): void {
@@ -54,6 +56,7 @@ class HomemadeLinkedList {
       node.setNext(this.first);
       this.first = node;
     }
+    this.size++;
   }
 
   public indexOf(item: number): number {
@@ -87,6 +90,7 @@ class HomemadeLinkedList {
 
     if (this.first === this.last) {
       this.first = this.last = null;
+      this.size--;
       return;
     }
 
@@ -95,6 +99,33 @@ class HomemadeLinkedList {
       this.first?.setNext(null);
       this.first = second;
     }
+    this.size--;
+  }
+
+  private getPreviousNode(node: LinkedNode): LinkedNode | null {
+    let current = this.first;
+    while (current !== null) {
+      if (current.getNext() === node) return current;
+      current = current.getNext();
+    }
+    return null;
+  }
+
+  public deleteLast(): void {
+    if (this.isEmpty()) throw new Error('list is empty');
+
+    if (this.first === this.last) {
+      this.first = this.last = null;
+    } else {
+      let previous = this.getPreviousNode(this.last!);
+      this.last = previous;
+      this.last?.setNext(null);
+    }
+    this.size--;
+  }
+
+  public getSize(): number {
+    return this.size;
   }
 
   // Print the list
@@ -109,10 +140,12 @@ class HomemadeLinkedList {
 
 // Example usage
 let selfMadeLinkedList: HomemadeLinkedList = new HomemadeLinkedList();
+console.log('size is:' + selfMadeLinkedList.getSize());
 selfMadeLinkedList.addLast(15);
 selfMadeLinkedList.addLast(30);
 selfMadeLinkedList.addLast(45);
 selfMadeLinkedList.addFirst(1);
+console.log('size is:' + selfMadeLinkedList.getSize());
 selfMadeLinkedList.printList();
 console.log(selfMadeLinkedList.indexOf(45));
 console.log(selfMadeLinkedList.indexOf(400));
@@ -121,4 +154,6 @@ console.log(selfMadeLinkedList.containsFull(45));
 console.log(selfMadeLinkedList.containsImproved(1));
 console.log(selfMadeLinkedList.containsImproved(400));
 selfMadeLinkedList.deleteFirst();
+selfMadeLinkedList.deleteLast();
 selfMadeLinkedList.printList();
+console.log('size is:' + selfMadeLinkedList.getSize());
