@@ -83,6 +83,13 @@ class HomemadeLinkedList {
   }
 
   public deleteFirst(): void {
+    if (this.isEmpty()) throw new Error('list is already empty');
+
+    if (this.first === this.last) {
+      this.first = this.last = null;
+      return;
+    }
+
     if (this.first !== null) {
       let second = this.first.getNext();
       this.first?.setNext(null);
