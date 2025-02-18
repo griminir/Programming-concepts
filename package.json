@@ -7,7 +7,7 @@
     "build": "tsc",
     "start-bubble": "node src/algorithms/bubbleSort.js",
     "start-array": "node src/data-structure/arrays.js",
-    "start-linked": "node src/data-structure/linked-list.js"
+    "start-linked": "node src/data-structure/linked-lists.js"
   },
   "keywords": [],
   "author": "",
