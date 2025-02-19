@@ -142,6 +142,19 @@ class HomemadeLinkedList {
     return array;
   }
 
+  public reverse(): void {
+    let previous = null;
+    let current = this.first;
+
+    while (current !== null) {
+      let next = current.getNext();
+      current.setNext(previous);
+      previous = current;
+      current = next!;
+    }
+    this.first = previous!;
+  }
+
   // Print the list
   public printList(): void {
     let current = this.first;
@@ -175,3 +188,17 @@ console.log('size is:' + selfMadeLinkedList.getSize());
 let array = selfMadeLinkedList.toArray();
 console.log(array.toString());
 console.log(Array.isArray(array));
+selfMadeLinkedList.addLast(45);
+selfMadeLinkedList.addLast(60);
+selfMadeLinkedList.reverse();
+selfMadeLinkedList.printList();
+selfMadeLinkedList.reverse();
+selfMadeLinkedList.printList();
+
+
+
+// singley linked list take less space
+// doubly linked lists take more space but give some faster runtime on some operations
+// example deleting from the end in singley linked list is O(n) while in a doubly linked list it's O(1)
+// we can make a linked list circular so that the last node ref the first node
+// example if for a music repeate feature
