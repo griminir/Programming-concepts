@@ -129,7 +129,7 @@ class HomemadeLinkedList {
   }
 
   public toArray(): number[] {
-    let array: number[] = [this.size];
+    let array: number[] = new Array(this.size);
     let current = this.first;
     let index = 0;
 
@@ -175,5 +175,3 @@ console.log('size is:' + selfMadeLinkedList.getSize());
 let array = selfMadeLinkedList.toArray();
 console.log(array.toString());
 console.log(Array.isArray(array));
-
-

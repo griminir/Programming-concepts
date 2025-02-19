@@ -121,7 +121,7 @@ class HomemadeLinkedList {
         return this.size;
     }
     toArray() {
-        let array = [this.size];
+        let array = new Array(this.size);
         let current = this.first;
         let index = 0;
         while (current !== null) {
