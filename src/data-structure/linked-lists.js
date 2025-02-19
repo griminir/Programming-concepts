@@ -132,6 +132,8 @@ class HomemadeLinkedList {
         return array;
     }
     reverse() {
+        if (this.isEmpty())
+            return;
         let previous = null;
         let current = this.first;
         while (current !== null) {

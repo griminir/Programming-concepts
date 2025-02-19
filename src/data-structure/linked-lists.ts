@@ -143,6 +143,7 @@ class HomemadeLinkedList {
   }
 
   public reverse(): void {
+    if (this.isEmpty()) return;
     let previous = null;
     let current = this.first;
 
@@ -194,8 +195,6 @@ selfMadeLinkedList.reverse();
 selfMadeLinkedList.printList();
 selfMadeLinkedList.reverse();
 selfMadeLinkedList.printList();
-
-
 
 // singley linked list take less space
 // doubly linked lists take more space but give some faster runtime on some operations
