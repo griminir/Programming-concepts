@@ -128,9 +128,24 @@ class HomemadeLinkedList {
     return this.size;
   }
 
+  public toArray(): number[] {
+    let array: number[] = [this.size];
+    let current = this.first;
+    let index = 0;
+
+    while (current !== null) {
+      array[index] = current.getValue();
+      index++;
+      current = current.getNext();
+    }
+
+    return array;
+  }
+
   // Print the list
   public printList(): void {
     let current = this.first;
+
     while (current !== null) {
       console.log(current.getValue());
       current = current.getNext();
@@ -157,3 +172,8 @@ selfMadeLinkedList.deleteFirst();
 selfMadeLinkedList.deleteLast();
 selfMadeLinkedList.printList();
 console.log('size is:' + selfMadeLinkedList.getSize());
+let array = selfMadeLinkedList.toArray();
+console.log(array.toString());
+console.log(Array.isArray(array));
+
+

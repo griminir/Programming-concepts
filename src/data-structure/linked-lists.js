@@ -120,6 +120,17 @@ class HomemadeLinkedList {
     getSize() {
         return this.size;
     }
+    toArray() {
+        let array = [this.size];
+        let current = this.first;
+        let index = 0;
+        while (current !== null) {
+            array[index] = current.getValue();
+            index++;
+            current = current.getNext();
+        }
+        return array;
+    }
     // Print the list
     printList() {
         let current = this.first;
@@ -148,3 +159,6 @@ selfMadeLinkedList.deleteFirst();
 selfMadeLinkedList.deleteLast();
 selfMadeLinkedList.printList();
 console.log('size is:' + selfMadeLinkedList.getSize());
+let array = selfMadeLinkedList.toArray();
+console.log(array.toString());
+console.log(Array.isArray(array));
