@@ -156,6 +156,22 @@ class HomemadeLinkedList {
     this.first = previous!;
   }
 
+  public getNodeXfromTheEnd(x: number): number {
+    if (this.isEmpty()) throw new Error('list is empty');
+    let mark = this.first;
+    let end = this.first;
+
+    for (let i = 0; i < x - 1; i++) {
+      end = end?.getNext()!;
+      if (end === null) throw new Error('list is not long enough');
+    }
+    while (end != this.last) {
+      mark = mark?.getNext()!;
+      end = end?.getNext()!;
+    }
+    return mark?.getValue()!;
+  }
+
   // Print the list
   public printList(): void {
     let current = this.first;
@@ -195,6 +211,7 @@ selfMadeLinkedList.reverse();
 selfMadeLinkedList.printList();
 selfMadeLinkedList.reverse();
 selfMadeLinkedList.printList();
+console.log(selfMadeLinkedList.getNodeXfromTheEnd(8));
 
 // singley linked list take less space
 // doubly linked lists take more space but give some faster runtime on some operations
