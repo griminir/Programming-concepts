@@ -5,7 +5,7 @@
 // pop O(1)
 // peek O(1)
 // isEmpty O(1)
-class homemadeStack {
+class HomemadeStack {
     constructor() {
         this.stack = new Array();
     }
@@ -26,7 +26,7 @@ class homemadeStack {
             return false;
     }
 }
-let selfmadeStack = new homemadeStack();
+let selfmadeStack = new HomemadeStack();
 selfmadeStack.push(5);
 selfmadeStack.push(10);
 let topOfStack = selfmadeStack.pop();
@@ -34,4 +34,5 @@ console.log(topOfStack);
 console.log(selfmadeStack.peek());
 console.log(selfmadeStack.isEmpty());
 selfmadeStack.pop();
+console.log(selfmadeStack.peek());
 console.log(selfmadeStack.isEmpty());

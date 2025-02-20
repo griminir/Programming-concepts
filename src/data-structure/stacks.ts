@@ -5,7 +5,7 @@
 // peek O(1)
 // isEmpty O(1)
 
-class homemadeStack {
+class HomemadeStack {
   private stack: number[] = new Array();
 
   public push(item: number) {
@@ -27,7 +27,7 @@ class homemadeStack {
   }
 }
 
-let selfmadeStack = new homemadeStack();
+let selfmadeStack = new HomemadeStack();
 selfmadeStack.push(5);
 selfmadeStack.push(10);
 let topOfStack = selfmadeStack.pop();
