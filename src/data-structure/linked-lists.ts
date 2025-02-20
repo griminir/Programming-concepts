@@ -4,7 +4,7 @@
 // lookup by index O(n)
 // insertion at the tail and at the head is O(1)
 // insertion in the middle is O(n)
-// deleting from the end is O(n)
+// deleting from the end is O(n) or O(1) in a doubly linked list
 // deleting from the beginning is O(1)
 // deleting from the middle is O(n)
 
@@ -237,3 +237,7 @@ selfMadeLinkedList.printMiddle(); // should print 45
 // example deleting from the end in singley linked list is O(n) while in a doubly linked list it's O(1)
 // we can make a linked list circular so that the last node ref the first node
 // example if for a music repeate feature
+
+// linked list take up more memory the an array
+// grow and shrink as needed compared to a static array
+
