@@ -183,8 +183,7 @@ class HomemadeLinkedList {
         middle = middle?.getNext()!;
       }
       if (current === this.last) console.log(middle?.getValue());
-      else
-        console.log(middle?.getValue() + ',' + middle?.getNext()?.getValue());
+      else console.log(middle?.getValue() + ',' + middle?.getNext()?.getValue());
     }
   }
 
