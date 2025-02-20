@@ -172,6 +172,22 @@ class HomemadeLinkedList {
     return mark?.getValue()!;
   }
 
+  public printMiddle(): void {
+    let current = this.first;
+    let middle = this.first;
+
+    while (current !== this.last && current?.getNext() !== this.last) {
+      if (current !== null) {
+        current = current.getNext();
+        current = current?.getNext()!;
+        middle = middle?.getNext()!;
+      }
+      if (current === this.last) console.log(middle?.getValue());
+      else
+        console.log(middle?.getValue() + ',' + middle?.getNext()?.getValue());
+    }
+  }
+
   // Print the list
   public printList(): void {
     let current = this.first;
@@ -211,7 +227,10 @@ selfMadeLinkedList.reverse();
 selfMadeLinkedList.printList();
 selfMadeLinkedList.reverse();
 selfMadeLinkedList.printList();
-console.log(selfMadeLinkedList.getNodeXfromTheEnd(8));
+console.log(selfMadeLinkedList.getNodeXfromTheEnd(3));
+selfMadeLinkedList.printMiddle(); // should print 30,45
+selfMadeLinkedList.addLast(75);
+selfMadeLinkedList.printMiddle(); // should print 45
 
 // singley linked list take less space
 // doubly linked lists take more space but give some faster runtime on some operations

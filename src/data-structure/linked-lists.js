@@ -145,6 +145,8 @@ class HomemadeLinkedList {
         this.first = previous;
     }
     getNodeXfromTheEnd(x) {
+        if (this.isEmpty())
+            throw new Error('list is empty');
         let mark = this.first;
         let end = this.first;
         for (let i = 0; i < x - 1; i++) {
@@ -157,6 +159,22 @@ class HomemadeLinkedList {
             end = end === null || end === void 0 ? void 0 : end.getNext();
         }
         return mark === null || mark === void 0 ? void 0 : mark.getValue();
+    }
+    printMiddle() {
+        var _a;
+        let current = this.first;
+        let middle = this.first;
+        while (current !== this.last && (current === null || current === void 0 ? void 0 : current.getNext()) !== this.last) {
+            if (current !== null) {
+                current = current.getNext();
+                current = current === null || current === void 0 ? void 0 : current.getNext();
+                middle = middle === null || middle === void 0 ? void 0 : middle.getNext();
+            }
+            if (current === this.last)
+                console.log(middle === null || middle === void 0 ? void 0 : middle.getValue());
+            else
+                console.log((middle === null || middle === void 0 ? void 0 : middle.getValue()) + ',' + ((_a = middle === null || middle === void 0 ? void 0 : middle.getNext()) === null || _a === void 0 ? void 0 : _a.getValue()));
+        }
     }
     // Print the list
     printList() {
@@ -195,7 +213,10 @@ selfMadeLinkedList.reverse();
 selfMadeLinkedList.printList();
 selfMadeLinkedList.reverse();
 selfMadeLinkedList.printList();
-console.log(selfMadeLinkedList.getNodeXfromTheEnd(8));
+console.log(selfMadeLinkedList.getNodeXfromTheEnd(3));
+selfMadeLinkedList.printMiddle(); // should print 30,45
+selfMadeLinkedList.addLast(75);
+selfMadeLinkedList.printMiddle(); // should print 45
 // singley linked list take less space
 // doubly linked lists take more space but give some faster runtime on some operations
 // example deleting from the end in singley linked list is O(n) while in a doubly linked list it's O(1)
