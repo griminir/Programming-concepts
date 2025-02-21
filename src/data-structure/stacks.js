@@ -34,5 +34,4 @@ console.log(topOfStack);
 console.log(selfmadeStack.peek());
 console.log(selfmadeStack.isEmpty());
 selfmadeStack.pop();
-console.log(selfmadeStack.peek());
 console.log(selfmadeStack.isEmpty());

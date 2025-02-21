@@ -1,4 +1,4 @@
-// last in, first out
+// stacks use last in, first out
 // undo button is an example
 // push O(1)
 // pop O(1)
