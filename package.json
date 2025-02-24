@@ -9,7 +9,8 @@
     "start-array": "node src/data-structure/arrays.js",
     "start-linked": "node src/data-structure/linked-lists.js",
     "start-stack": "node src/data-structure/stacks.js",
-    "start-queue": "node src/data-structure/queues.js"
+    "start-queue": "node src/data-structure/queues.js",
+    "start-hashTable": "node src/data-structure/hashTables.js"
   },
   "keywords": [],
   "author": "",
