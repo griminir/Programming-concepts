@@ -89,6 +89,8 @@ class HomemadeHashTable {
     let index = this.hash1(key);
     if (this.table[index] === null) {
       this.table[index] = new Entry(key, value);
+    } else if (this.table[index]!.key === key) {
+      this.table[index]!.value = value;
     } else {
       let i = 1;
       while (i < this.table.length) {
@@ -128,7 +130,8 @@ selfmadeHashTable.put(2, 'banana');
 selfmadeHashTable.put(3, 'cherry');
 selfmadeHashTable.put(4, 'pineapple');
 selfmadeHashTable.put(15, 'date');
-console.log(selfmadeHashTable.get(1)); // apple
+selfmadeHashTable.put(1, 'grape');
+console.log(selfmadeHashTable.get(1)); // grape
 console.log(selfmadeHashTable.get(2)); // banana
 console.log(selfmadeHashTable.get(3)); // cherry
 console.log(selfmadeHashTable.get(4)); // pineapple
