@@ -98,6 +98,9 @@ class HomemadeHashTable {
         if (this.table[newIndex] === null) {
           this.table[newIndex] = new Entry(key, value);
           return;
+        } else if (this.table[newIndex]!.key === key) {
+          this.table[newIndex]!.value = value;
+          return;
         }
         i++;
       }
@@ -110,7 +113,37 @@ class HomemadeHashTable {
     if (this.table[index] !== null && this.table[index]!.key === key) {
       return this.table[index]!.value;
     } else {
-      return null;
+      let i = 1;
+      while (i < this.table.length) {
+        let newIndex = (index + i * this.hash2(key)) % this.table.length;
+        if (
+          this.table[newIndex] !== null &&
+          this.table[newIndex]!.key === key
+        ) {
+          return this.table[newIndex]!.value;
+        }
+        i++;
+      }
+    }
+    return null;
+  }
+
+  public remove(key: number): void {
+    let index = this.hash1(key);
+    if (this.table[index] !== null && this.table[index]!.key === key) {
+      this.table[index] = null;
+    } else {
+      let i = 1;
+      while (i < this.table.length) {
+        let newIndex = (index + i * this.hash2(key)) % this.table.length;
+        if (
+          this.table[newIndex] !== null &&
+          this.table[newIndex]!.key === key
+        ) {
+          return;
+        }
+        i++;
+      }
     }
   }
 
@@ -119,7 +152,7 @@ class HomemadeHashTable {
   }
 
   private hash2(key: number): number {
-    let prime = 1;
+    let prime = 3;
     return prime - (key % prime);
   }
 }
@@ -131,9 +164,14 @@ selfmadeHashTable.put(3, 'cherry');
 selfmadeHashTable.put(4, 'pineapple');
 selfmadeHashTable.put(15, 'date');
 selfmadeHashTable.put(1, 'grape');
-console.log(selfmadeHashTable.get(1)); // grape
+selfmadeHashTable.remove(1);
+console.log(selfmadeHashTable.get(1)); // grape was removed
 console.log(selfmadeHashTable.get(2)); // banana
 console.log(selfmadeHashTable.get(3)); // cherry
 console.log(selfmadeHashTable.get(4)); // pineapple
 console.log(selfmadeHashTable.get(15)); // date
-console.log(selfmadeHashTable.get(5)); // null
+console.log(selfmadeHashTable.get(5)); // null asking for something that does not exsist
+selfmadeHashTable.put(5, 'kiwi');
+console.log(selfmadeHashTable.get(5)); // kiwi
+selfmadeHashTable.remove(15);
+console.log(selfmadeHashTable);
