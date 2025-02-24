@@ -54,3 +54,16 @@ function findFirstRepeatedChar(input: string): string | null {
 
 const result3 = findFirstRepeatedChar('green apple'); // e
 console.log(result3);
+
+// open addressing: our hash1 is key % table.length
+// - linear probing (hash1 +1) % table.length
+// - quadratic probing (hash1 + i^2) % table.length
+// - double hashing (hash1 + i * hash2) % table.length
+// popular second hash: hash2(key) = prime - (key % prime)
+// where prime is a prime number smaller than the table size
+
+// example of double hashing key is 11, table size is 5
+// hash1: key % table.length = 11 % 5 = 1
+// index 1 is taken, so we use double hashing
+// hash2: prime - (key % prime) = 3 - (11 % 3) = 1
+// hash1 + taken index * hash2 % table.length = (1 + 1 * 1) % 5 = 2
