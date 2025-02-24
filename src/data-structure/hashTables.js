@@ -75,14 +75,15 @@ class HomemadeHashTable {
         }
         else {
             let i = 1;
-            while (true) {
+            while (i < this.table.length) {
                 let newIndex = (index + i * this.hash2(key)) % this.table.length;
                 if (this.table[newIndex] === null) {
                     this.table[newIndex] = new Entry(key, value);
-                    break;
+                    return;
                 }
                 i++;
             }
+            throw new Error('hash table is full');
         }
     }
     get(key) {
