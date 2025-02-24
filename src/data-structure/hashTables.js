@@ -47,3 +47,70 @@ function findFirstRepeatedChar(input) {
 }
 const result3 = findFirstRepeatedChar('green apple'); // e
 console.log(result3);
+// open addressing: our hash1 is key % table.length
+// - linear probing (hash1 +1) % table.length
+// - quadratic probing (hash1 + i^2) % table.length
+// - double hashing (hash1 + i * hash2) % table.length
+// popular second hash: hash2(key) = prime - (key % prime)
+// where prime is a prime number smaller than the table size
+// example of double hashing key is 11, table size is 5
+// hash1: key % table.length = 11 % 5 = 1
+// index 1 is taken, so we use double hashing
+// hash2: prime - (key % prime) = 3 - (11 % 3) = 1
+// hash1 + taken index * hash2 % table.length = (1 + 1 * 1) % 5 = 2
+class Entry {
+    constructor(key, value) {
+        this.key = key;
+        this.value = value;
+    }
+}
+class HomemadeHashTable {
+    constructor(size) {
+        this.table = new Array(size).fill(null);
+    }
+    put(key, value) {
+        let index = this.hash1(key);
+        if (this.table[index] === null) {
+            this.table[index] = new Entry(key, value);
+        }
+        else {
+            let i = 1;
+            while (true) {
+                let newIndex = (index + i * this.hash2(key)) % this.table.length;
+                if (this.table[newIndex] === null) {
+                    this.table[newIndex] = new Entry(key, value);
+                    break;
+                }
+                i++;
+            }
+        }
+    }
+    get(key) {
+        let index = this.hash1(key);
+        if (this.table[index] !== null && this.table[index].key === key) {
+            return this.table[index].value;
+        }
+        else {
+            return null;
+        }
+    }
+    hash1(key) {
+        return key % this.table.length;
+    }
+    hash2(key) {
+        let prime = 1;
+        return prime - (key % prime);
+    }
+}
+let selfmadeHashTable = new HomemadeHashTable(5);
+selfmadeHashTable.put(1, 'apple');
+selfmadeHashTable.put(2, 'banana');
+selfmadeHashTable.put(3, 'cherry');
+selfmadeHashTable.put(4, 'pineapple');
+selfmadeHashTable.put(15, 'date');
+console.log(selfmadeHashTable.get(1)); // apple
+console.log(selfmadeHashTable.get(2)); // banana
+console.log(selfmadeHashTable.get(3)); // cherry
+console.log(selfmadeHashTable.get(4)); // pineapple
+console.log(selfmadeHashTable.get(15)); // date
+console.log(selfmadeHashTable.get(5)); // null

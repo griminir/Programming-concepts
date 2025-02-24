@@ -67,3 +67,69 @@ console.log(result3);
 // index 1 is taken, so we use double hashing
 // hash2: prime - (key % prime) = 3 - (11 % 3) = 1
 // hash1 + taken index * hash2 % table.length = (1 + 1 * 1) % 5 = 2
+
+class Entry {
+  key: number;
+  value: string;
+
+  constructor(key: number, value: string) {
+    this.key = key;
+    this.value = value;
+  }
+}
+
+class HomemadeHashTable {
+  private table: (Entry | null)[];
+
+  constructor(size: number) {
+    this.table = new Array(size).fill(null);
+  }
+
+  public put(key: number, value: string): void {
+    let index = this.hash1(key);
+    if (this.table[index] === null) {
+      this.table[index] = new Entry(key, value);
+    } else {
+      let i = 1;
+      while (true) {
+        let newIndex = (index + i * this.hash2(key)) % this.table.length;
+        if (this.table[newIndex] === null) {
+          this.table[newIndex] = new Entry(key, value);
+          break;
+        }
+        i++;
+      }
+    }
+  }
+
+  public get(key: number): string | null {
+    let index = this.hash1(key);
+    if (this.table[index] !== null && this.table[index]!.key === key) {
+      return this.table[index]!.value;
+    } else {
+      return null;
+    }
+  }
+
+  private hash1(key: number): number {
+    return key % this.table.length;
+  }
+
+  private hash2(key: number): number {
+    let prime = 1;
+    return prime - (key % prime);
+  }
+}
+
+let selfmadeHashTable = new HomemadeHashTable(5);
+selfmadeHashTable.put(1, 'apple');
+selfmadeHashTable.put(2, 'banana');
+selfmadeHashTable.put(3, 'cherry');
+selfmadeHashTable.put(4, 'pineapple');
+selfmadeHashTable.put(15, 'date');
+console.log(selfmadeHashTable.get(1)); // apple
+console.log(selfmadeHashTable.get(2)); // banana
+console.log(selfmadeHashTable.get(3)); // cherry
+console.log(selfmadeHashTable.get(4)); // pineapple
+console.log(selfmadeHashTable.get(15)); // date
+console.log(selfmadeHashTable.get(5)); // null
