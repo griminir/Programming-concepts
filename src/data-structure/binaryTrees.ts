@@ -59,6 +59,25 @@ class Tree {
     return false;
   }
 
+  public findHeight(): number {
+    if (this.root === null) return -1;
+    if (this.root) return this.height(this.root);
+
+    throw new Error('wrong implimentasjon');
+  }
+
+  private height(root: TreeNode): number {
+    if (root.leftChild === null && root.rightChild === null) return 0;
+
+    if (root.leftChild && root.rightChild)
+      return (
+        1 + Math.max(this.height(root.leftChild), this.height(root.rightChild))
+      );
+
+    // should never be hit
+    throw new Error('wrong implementation');
+  }
+
   //made the ai do this for me
   public print(): void {
     this.inOrderTraversal(this.root, null, 'root');
@@ -132,3 +151,4 @@ console.log(binaryTree.find(27));
 binaryTree.traversePreOrder();
 console.log('new traversal');
 binaryTree.traversePostOrder();
+console.log('height: ' + binaryTree.findHeight());

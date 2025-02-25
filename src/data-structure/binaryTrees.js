@@ -13,6 +13,7 @@ class TreeNode {
 class Tree {
     constructor() {
         this.root = null;
+        // the in order traversal would just be to put log in the middle of the 2 root child if statments
     }
     insert(value) {
         let newNode = new TreeNode(value);
@@ -52,6 +53,21 @@ class Tree {
             }
         }
         return false;
+    }
+    findHeight() {
+        if (this.root === null)
+            return -1;
+        if (this.root)
+            return this.height(this.root);
+        throw new Error('wrong implimentasjon');
+    }
+    height(root) {
+        if (root.leftChild === null && root.rightChild === null)
+            return 0;
+        if (root.leftChild && root.rightChild)
+            return (1 + Math.max(this.height(root.leftChild), this.height(root.rightChild)));
+        // should never be hit
+        throw new Error('wrong implementation');
     }
     //made the ai do this for me
     print() {
@@ -114,5 +130,6 @@ binaryTree.print();
 console.log(binaryTree.find(10));
 console.log(binaryTree.find(27));
 binaryTree.traversePreOrder();
-console.log("new traversal");
+console.log('new traversal');
 binaryTree.traversePostOrder();
+console.log('height' + binaryTree.findHeight());
