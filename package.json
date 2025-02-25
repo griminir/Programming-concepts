@@ -10,7 +10,8 @@
     "start-linked": "node src/data-structure/linked-lists.js",
     "start-stack": "node src/data-structure/stacks.js",
     "start-queue": "node src/data-structure/queues.js",
-    "start-hashTable": "node src/data-structure/hashTables.js"
+    "start-hashTable": "node src/data-structure/hashTables.js",
+    "start-binaryTree": "node src/data-structure/binaryTrees.js"
   },
   "keywords": [],
   "author": "",
